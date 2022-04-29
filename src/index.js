@@ -29,7 +29,7 @@ function createCountriesMarkup(countries) {
     const markup = countries.map(country => console.log(country.name.official, country.capital));
   } else if (countries.length === 1) {
     refs.counrtyList.innerHTML = '';
-    let oneCountryMarkup = `MARKUP FOR ONE COUNTRY`;
+    let oneCountryMarkup = `MARKUP FOR ONE COUNTRY!`;
     refs.counrtyBlock.insertAdjacentElement('beforeend', oneCountryMarkup);
   } else if (countries.length > 10) {
     refs.counrtyBlock.innerHTML = '';
