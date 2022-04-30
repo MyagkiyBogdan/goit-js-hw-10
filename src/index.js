@@ -18,19 +18,36 @@ function onInputFindCountry(event) {
   findCountries
     .fetchCountries(event.target.value)
     .then(countries => createCountriesMarkup(countries))
-    .catch(error => Notify.failure('Oops, there is no country with that name'));
+    .catch(error => {
+      Notify.failure('Oops, there is no country with that name');
+      refs.counrtyBlock.innerHTML = '';
+      refs.counrtyList.innerHTML = '';
+    });
 }
 
 function createCountriesMarkup(countries) {
-  // console.log(country);
 
   if (countries.length > 1 && countries.length <= 10) {
     refs.counrtyBlock.innerHTML = '';
-    const markup = countries.map(country => console.log(country.name.official, country.capital));
+    const markupList = countries.map(
+      country => `<li><div class="country-wrapper">
+        <img src=${country.flags.svg} alt=${country.name.common} width="25" height="25" />
+        <p class="country-name-small">${country.name.common}</p>
+      </div></li>`,
+    );
+    refs.counrtyList.innerHTML = markupList.join('');
   } else if (countries.length === 1) {
     refs.counrtyList.innerHTML = '';
-    let oneCountryMarkup = `MARKUP FOR ONE COUNTRY!`;
-    refs.counrtyBlock.insertAdjacentElement('beforeend', oneCountryMarkup);
+    const countryLangs = Object.values(countries[0].languages).join(', ');
+    console.log(countryLangs);
+    let oneCountryMarkup = `<div class="country-wrapper">
+        <img src=${countries[0].flags.svg} alt=${countries[0].name.common} width="25" height="25" />
+        <p class="country-name">${countries[0].name.common}</p>
+      </div>
+      <p><b>Capital:</b>  ${countries[0].capital}</p>
+      <p><b>Population:</b>  ${countries[0].population}</p>
+      <p><b>Lanuguages:</b>  ${countryLangs}</p>`;
+    refs.counrtyBlock.innerHTML = oneCountryMarkup;
   } else if (countries.length > 10) {
     refs.counrtyBlock.innerHTML = '';
     refs.counrtyList.innerHTML = '';

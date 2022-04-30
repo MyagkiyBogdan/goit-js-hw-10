@@ -7,7 +7,7 @@ body {
     'Open Sans', 'Helvetica Neue', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: #fafafa;
+  background-color: #ebebeb;
   color: #212121;
   line-height: 1.5;
 }
@@ -19,7 +19,34 @@ body {
   margin-bottom: 16px;
 }
 
-.input {
+.input,
+.country-info {
   margin-top: 15px;
   margin-left: 15px;
+}
+
+.country-name {
+  font-weight: 700;
+  font-size: 32px;
+  margin-top: 0;
+  margin-bottom: 0;
+  margin-left: 5px;
+}
+
+.country-name-small {
+  font-weight: 700;
+  font-size: 20px;
+  margin-left: 5px;
+  margin-top: 0;
+  margin-bottom: 7px;
+}
+
+.country-wrapper {
+  display: flex;
+  align-items: center;
+}
+
+.country-list {
+  list-style: none;
+  padding-left: 20px;
 }
